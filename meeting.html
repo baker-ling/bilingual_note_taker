@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilingual Meeting Note Taker</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Bilingual Meeting Note Taker</h1>
+        <h2 id="meeting-title">Meeting Title</h2>
+        <h3>Last updated: <span id="last-updated-time">date and time</span></h3>
+        <button id="save-button-top">Save Meeting</button>
+    </header>
+    <main>
+        <div class="line-item">
+            <textarea class="note-source"></textarea>
+            <textarea class="note-translation"></textarea>
+            <button class="delete-button">Delete</button>
+            <button class="insert-below-button">Insert line</button>
+        </div>
+    </main>
+
+    <footer>
+        <button id="save-button-top">Save Meeting</button>
+    </footer>
+    
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
