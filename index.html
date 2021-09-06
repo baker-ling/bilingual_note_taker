@@ -4,18 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>         
   <!--Title of project-->
   <title>Bilingual Meeting Note Taker</title>
   <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
-<body>
+<body class="container orange lighten-5">
   <header>
-    <h1>Title</h1>
+    <h1 class ="indigo-text text-darken-4 center-align">Title</h1>
   </header>
 
-  <section>
+  <section class="center-align">
     <form name="new-meeting">
       <h2>Start a new meeting</h2>
       <input type="text" id="meeting-name-input" placeholder="Name of your meeting">
@@ -29,11 +35,11 @@
         <option value="en">English</option>
         <option value="es">Spanish</option>
       </select>
-      <button type="submit">Start Meeting</button>
+      <a href="meeting.html" class="btn indigo darken-4 waves-effect waves-light">Start Meeting</a>
     </form>
   </section>
 
-  <section>
+  <section class="center-align">
     <h2><a href="past_meetings.html">Look up past meetings</a></h2>
   </section>
 

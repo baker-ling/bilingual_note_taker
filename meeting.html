@@ -4,28 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Bilingual Meeting Note Taker</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body>
+<body class="container orange lighten-5">
     <header>
-        <h1>Bilingual Meeting Note Taker</h1>
+        <h1 class="center-align">Bilingual Meeting Note Taker</h1>
         <h2 id="meeting-title">Meeting Title</h2>
         <h3>Last updated: <span id="last-updated-time">date and time</span></h3>
         <button id="save-button-top">Save Meeting</button>
     </header>
     <main>
-        <div class="line-item">
-            <textarea class="note-source"></textarea>
-            <textarea class="note-translation"></textarea>
-            <button class="delete-button">Delete</button>
-            <button class="insert-below-button">Insert line</button>
+        <div class="line-item row">
+            <!--mobile first-->
+            <textarea class="note-source white col s12 m6"></textarea>
+            <textarea class="note-translation white col s12 m6"></textarea>
+            <!--Insert line button-->
+            <a href="#" class="btn-floating green">
+                <i class="material-icons white-text">add</i>
+            </a>
+            <!--delete button-->
+            <a href="#" class="btn-floating red">
+                <i class="material-icons white-text">remove</i>
+            </a>
+            <a href="#" class="btn-floating orange">
+                <i class="material-icons white-text">edit</i>
+            </a>
         </div>
     </main>
-
+    <br>
     <footer>
-        <button id="save-button-top">Save Meeting</button>
+        <!--save-button-top-->
+        <a href="#" id="save-button-top" class="btn indigo waves-effect waves-light">
+            <sapn>Save Meeting</sapn>
+            <i class="material-icons right white-text">save</i>
+        </a>
     </footer>
     
     <script src="./assets/js/script.js"></script>
