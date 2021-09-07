@@ -1,3 +1,7 @@
+// Global constants for various keys
+const PAST_MEETINGS_LS_KEY = 'past_meetings'; // TODO: Make sure same keys is used for storing past meeting metadata in local storage
+
+
 //For directing to next page on save meeting button
 window.location.href = "meeting.html";
 
@@ -6,6 +10,7 @@ window.location.href = "meeting.html";
 
 const inputText = document.getElementById("txt");
 const myButton = document.getElementsByClassName("insert-below-butto");
+
 
 
 /**
@@ -71,4 +76,25 @@ function getSourceLanguage() {
 function getTargetLanguage() {
     // TODO implement proper logic for getTargetLanguage
     return 'es';
+}
+
+
+function displayPastMeetingsList() {
+    const pastMeetingsJSON = localStorage.getItem(PAST_MEETINGS_LS_KEY);
+    const pastMeetings = JSON.parse(pastMeetingsJSON);
+
+    const pastMeetingsUL = document.querySelector('#past-meeting-list ul')
+    //make sure pastMeetingsUL has no children
+    while (pastMeetingsUL.firstChild) {
+        pastMeetingsUL.removeChild(pastMeetingsUL.firstChild);
+    }
+    //add list items for each meeting
+    for (const meeting of pastMeetings) {
+        const listItem = document.createElement('li');
+        const listItemAnchor = document.createElement('a')
+        listItemAnchor.setAttribute('href', `meeting.html?past_meeting_name=${encodeURI(meeting.name)}`) // todo make link works and that .name attribute is correct
+        listItemAnchor.textContent = `${meeting.name} — ${meeting.date}`; // todo make sure date displays correctly
+        listItem.appendChild(listItemAnchor);
+        pastMeetingsUL.appendChild(listItem);
+    }
 }
