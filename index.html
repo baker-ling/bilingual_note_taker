@@ -22,7 +22,7 @@
   </header>
 
   <section class="center-align">
-    <form name="new-meeting">
+    <form name="new-meeting" action="">
       <h2>Start a new meeting</h2>
       <input type="text" id="meeting-name-input" placeholder="Name of your meeting">
       <select id="language1-select">
@@ -35,7 +35,7 @@
         <option value="en">English</option>
         <option value="es">Spanish</option>
       </select>
-      <a href="meeting.html" class="btn indigo darken-4 waves-effect waves-light">Start Meeting</a>
+      <a href="meeting.html" onclick="pageRedirect()" class="btn indigo darken-4 waves-effect waves-light">Start Meeting</a>
     </form>
   </section>
 
@@ -44,7 +44,7 @@
   </section>
 
 
-    <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
