@@ -3,7 +3,7 @@ const PAST_MEETINGS_LS_KEY = 'past_meetings'; // TODO: Make sure same keys is us
 
 
 //For directing to next page on save meeting button
-window.location.href = "meeting.html";
+// window.location.href = "meeting.html";
 
 
 // Adding and Removing items on notes
