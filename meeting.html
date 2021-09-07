@@ -10,24 +10,39 @@
 </head>
 <body>
     <header>
-        <h1>Bilingual Meeting Note Taker</h1>
+        <h1>Bilingual Meeting Notes</h1>
+           <!--Time and Date -->
+            <h3>
+             Last updated: <div id="last-updated-time">
+                 date and time
+
+             </div>
+        </h3>
+        
         <h2 id="meeting-title">Meeting Title</h2>
-        <h3>Last updated: <span id="last-updated-time">date and time</span></h3>
-        <button id="save-button-top">Save Meeting</button>
-        <button id="exit-button-top">Exit Meeting</button>
+        <form>
+            <input type="text" name="text" id="txt"
+            required>
+        
+          
+    </form>
+       
     </header>
     <main>
+        <!--Meeting Notes that came from translation between languages-->
         <div class="line-item">
             <textarea class="note-source"></textarea>
             <textarea class="note-translation"></textarea>
+
             <button class="delete-button">Delete</button>
             <button class="insert-below-button">Insert line</button>
         </div>
     </main>
 
     <footer>
-        <button id="save-button-bottom">Save Meeting</button>
-        <button id="exit-button-bottom">Exit Meeting</button>
+        <!--Save and delete Notes-->
+        <button type = submit class="save-button-bottom">Save Meeting</button>
+        <button type="" class="exit-button-bottom">Exit Meeting</button>
     </footer>
     
     <script src="./assets/js/script.js"></script>
