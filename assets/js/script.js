@@ -98,3 +98,7 @@ function displayPastMeetingsList() {
         pastMeetingsUL.appendChild(listItem);
     }
 }
+//
+document.getElementById("exit-button-bottom").onclick = function () {
+    location.href = "https://baker-ling.github.io/osu_bcs_project1/past_meetings.html"
+}
