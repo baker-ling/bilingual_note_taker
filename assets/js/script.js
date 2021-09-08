@@ -1,3 +1,4 @@
+
 // Global constants for various keys
 const PAST_MEETINGS_LS_KEY = 'past_meetings'; // TODO: Make sure same keys is used for storing past meeting metadata in local storage
 
@@ -10,7 +11,6 @@ const PAST_MEETINGS_LS_KEY = 'past_meetings'; // TODO: Make sure same keys is us
 
 const inputText = document.getElementById("txt");
 const myButton = document.getElementsByClassName("insert-below-butto");
-
 
 
 /**
@@ -76,6 +76,12 @@ function getSourceLanguage() {
 function getTargetLanguage() {
     // TODO implement proper logic for getTargetLanguage
     return 'es';
+}
+
+//Exit button bottom redirecting to past_meetings.html
+const bottomExitbutton = document.getElementById("exit-button-bottom");
+bottomExitbutton.addEventListener("click"), function () {
+    location.href = "./past_meetings.html"
 }
 
 
