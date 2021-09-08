@@ -98,3 +98,19 @@ function displayPastMeetingsList() {
         pastMeetingsUL.appendChild(listItem);
     }
 }
+
+
+/**
+ * Displays a past meeting.
+ * @param {Object} meeting - Past meeting object with its notes included.
+ */
+function displayPastMeeting(meeting) {
+    showMeetingTitle(meeting.title);    // TODO make sure this exists
+    setMeetingLanguages(meeting.sourceLang, meeting.targetLang); // TODO I am assuming that this function would also display those languages above each column of notes
+    showMeetingLastUpdated(meeting.lastUpdated); // TODO make sure this exists
+    for (const note of meeting.notes) {
+        const sourceTextarea = addNoteRow();
+        sourceTextarea.value = note; // TODO check if this would trigger an onchange event listener
+        translateTextarea(sourceTextarea); 
+    }
+}
