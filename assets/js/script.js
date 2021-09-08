@@ -1,6 +1,6 @@
 // Global constants for various keys
 const PAST_MEETINGS_LS_KEY = 'past_meetings'; // TODO: Make sure same keys is used for storing past meeting metadata in local storage
-
+const PAST_MEETING_ID_SEARCH_PARAM_KEY = 'past_meeting_name';
 
 //For directing to next page on save meeting button
 window.location.href = "meeting.html";
@@ -92,7 +92,7 @@ function displayPastMeetingsList() {
     for (const meeting of pastMeetings) {
         const listItem = document.createElement('li');
         const listItemAnchor = document.createElement('a')
-        listItemAnchor.setAttribute('href', `meeting.html?past_meeting_name=${encodeURI(meeting.name)}`) // todo make link works and that .name attribute is correct
+        listItemAnchor.setAttribute('href', `meeting.html?${PAST_MEETING_ID_SEARCH_PARAM_KEY}=${encodeURI(meeting.pantryId)}`) // todo make link works and that .name attribute is correct
         listItemAnchor.textContent = `${meeting.name} — ${meeting.date}`; // todo make sure date displays correctly
         listItem.appendChild(listItemAnchor);
         pastMeetingsUL.appendChild(listItem);
@@ -113,4 +113,28 @@ function displayPastMeeting(meeting) {
         sourceTextarea.value = note; // TODO check if this would trigger an onchange event listener
         translateTextarea(sourceTextarea); 
     }
+}
+
+/**
+ * Checks if we are supposed to be displaying a meeting whose id is passed to meeting.html as a URL search parameter
+ * @returns {boolean}
+ */
+function checkForPastMeetingSearchParam() {
+    return window.location.pathname.toString().endsWith('meeting.html')
+           && new URLSearchParams(window.location.search).has(PAST_MEETING_ID_SEARCH_PARAM_KEY); // todo make sure this fits the code for loading past meetings
+}
+
+function initPastMeeting() {
+    const meetingId = new URLSearchParams(window.location.search).get(PAST_MEETING_ID_SEARCH_PARAM_KEY);
+    const meeting = getPastMeetingById(meetingId); // todo make sure that this integrates with what Samira is working on 
+    displayPastMeeting(meeting);
+}
+
+/**
+ * Code to intialize meeting.html
+ */
+if (checkForPastMeetingSearchParam()) {
+    initPastMeeting(); 
+} else {
+    initNewMeeting(); // todo make sure that this call matches what Cooper is working on
 }
