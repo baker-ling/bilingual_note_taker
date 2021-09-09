@@ -98,3 +98,15 @@ function displayPastMeetingsList() {
         pastMeetingsUL.appendChild(listItem);
     }
 }
+
+let options = [];
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.dropdown-trigger');
+    let instances = M.Dropdown.init(elems, options);
+  });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.dropdown-trigger2');
+    let instances = M.Dropdown.init(elems, options);
+  });
