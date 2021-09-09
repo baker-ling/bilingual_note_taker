@@ -1,19 +1,4 @@
 <<<<<<< HEAD
-/* Pantry Api Steps:
-  1. On savecreate a basket for notes with an identifier(code to share).
-   -POST to Pantry using meeting name as basket name and identifier.
-  2. Retrieve the corresponding basket and display it when user wants to view past meeting notes.
-   -GET from pantry and render it to the page.
-   2 ways:
-   1. By clicking on the list
-   2. By searching with a code
-    
-  */
-
-/* Local Storage steps:
-1. Create an array of objects.
-2. On save push object to array and save it on local storage
-*/
 
 let saveMeetingEl = document.querySelectorAll(".save-button-top");
 let meetingsArr = JSON.parse(localStorage.getItem("meetingsArr")) || [];
