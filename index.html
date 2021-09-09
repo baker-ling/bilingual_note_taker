@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  
   <!--Title of project-->
   <title>Bilingual Meeting Note Taker</title>
   <link rel="stylesheet" href="./assets/css/reset.css" />
@@ -24,47 +23,39 @@
     <form name="new-meeting" action="">
       <h2>Start a new meeting</h2>
       <input type="text" id="meeting-name-input" placeholder="Name of your meeting">
-      <select id="language1-select">
-        <option disabled selected>Select your language</option>
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
-      <select id="language2-select">
-        <option disabled selected>Select a language to translate to</option>
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
+      
       <a href="meeting.html" onclick="pageRedirect()" class="btn indigo darken-4 waves-effect waves-light">Start Meeting</a>
     </form>
   </section>
 
+  <section>
    <!-- Dropdown Trigger -->
    <a class='dropdown-trigger btn deep-orange lighten-2' href='#' data-target='dropdown1'>Choose Language</a>
 
    <!-- Dropdown Structure -->
    <ul id='dropdown1' class='dropdown-content'>
-     <li><a href="#!">English</a></li>
-     <li><a href="#!">Arabic</a></li>
-     <li><a href="#!">Chinese</a></li>
-     <li><a href="#!">Dutch</a></li>
-     <li><a href="#!">Finnish</a></li>
-     <li><a href="#!">French</a></li>
-     <li><a href="#!">German</a></li>
-     <li><a href="#!">Hindi</a></li>
-     <li><a href="#!">Hungarian</a></li>
-     <li><a href="#!">Indonesian</a></li>
-     <li><a href="#!">Irish</a></li>
-     <li><a href="#!">Italian</a></li>
-     <li><a href="#!">Japanese</a></li>
-     <li><a href="#!">Korean</a></li>
-     <li><a href="#!">Polish</a></li>
-     <li><a href="#!">Portuguese</a></li>
-     <li><a href="#!">Russian</a></li>
-     <li><a href="#!">Spanish</a></li>
-     <li><a href="#!">Swedish</a></li>
-     <li><a href="#!">Turkish</a></li>
-     <li><a href="#!">Ukranian</a></li>
-     <li><a href="#!">Vietnamese</a></li>
+     <li><a href="#!" value="ar">Arabic</a></li>
+     <li><a href="#!" value="zh">Chinese</a></li>
+     <li><a href="#!" value="nl">Dutch</a></li>
+     <li><a href="#!" value="en">English</a></li>
+     <li><a href="#!" value="fi">Finnish</a></li>
+     <li><a href="#!" value="fr">French</a></li>
+     <li><a href="#!" value="de">German</a></li>
+     <li><a href="#!" value="hi">Hindi</a></li>
+     <li><a href="#!" value="hu">Hungarian</a></li>
+     <li><a href="#!" value="id">Indonesian</a></li>
+     <li><a href="#!" value="ga">Irish</a></li>
+     <li><a href="#!" value="it">Italian</a></li>
+     <li><a href="#!" value="ja">Japanese</a></li>
+     <li><a href="#!" value="ko">Korean</a></li>
+     <li><a href="#!" value="pl">Polish</a></li>
+     <li><a href="#!" value="pt">Portuguese</a></li>
+     <li><a href="#!" value="ru">Russian</a></li>
+     <li><a href="#!" value="es">Spanish</a></li>
+     <li><a href="#!" value="sv">Swedish</a></li>
+     <li><a href="#!" value="tr">Turkish</a></li>
+     <li><a href="#!" value="uk">Ukranian</a></li>
+     <li><a href="#!" value="vi">Vietnamese</a></li>
    </ul>
 
    <!-- Dropdown Trigger -->
@@ -72,30 +63,30 @@
 
    <!-- Dropdown Structure -->
    <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#!">English</a></li>
-    <li><a href="#!">Arabic</a></li>
-    <li><a href="#!">Chinese</a></li>
-    <li><a href="#!">Dutch</a></li>
-    <li><a href="#!">Finnish</a></li>
-    <li><a href="#!">French</a></li>
-    <li><a href="#!">German</a></li>
-    <li><a href="#!">Hindi</a></li>
-    <li><a href="#!">Hungarian</a></li>
-    <li><a href="#!">Indonesian</a></li>
-    <li><a href="#!">Irish</a></li>
-    <li><a href="#!">Italian</a></li>
-    <li><a href="#!">Japanese</a></li>
-    <li><a href="#!">Korean</a></li>
-    <li><a href="#!">Polish</a></li>
-    <li><a href="#!">Portuguese</a></li>
-    <li><a href="#!">Russian</a></li>
-    <li><a href="#!">Spanish</a></li>
-    <li><a href="#!">Swedish</a></li>
-    <li><a href="#!">Turkish</a></li>
-    <li><a href="#!">Ukranian</a></li>
-    <li><a href="#!">Vietnamese</a></li>
+    <li><a href="#!" value="ar">Arabic</a></li>
+     <li><a href="#!" value="zh">Chinese</a></li>
+     <li><a href="#!" value="nl">Dutch</a></li>
+     <li><a href="#!" value="en">English</a></li>
+     <li><a href="#!" value="fi">Finnish</a></li>
+     <li><a href="#!" value="fr">French</a></li>
+     <li><a href="#!" value="de">German</a></li>
+     <li><a href="#!" value="hi">Hindi</a></li>
+     <li><a href="#!" value="hu">Hungarian</a></li>
+     <li><a href="#!" value="id">Indonesian</a></li>
+     <li><a href="#!" value="ga">Irish</a></li>
+     <li><a href="#!" value="it">Italian</a></li>
+     <li><a href="#!" value="ja">Japanese</a></li>
+     <li><a href="#!" value="ko">Korean</a></li>
+     <li><a href="#!" value="pl">Polish</a></li>
+     <li><a href="#!" value="pt">Portuguese</a></li>
+     <li><a href="#!" value="ru">Russian</a></li>
+     <li><a href="#!" value="es">Spanish</a></li>
+     <li><a href="#!" value="sv">Swedish</a></li>
+     <li><a href="#!" value="tr">Turkish</a></li>
+     <li><a href="#!" value="uk">Ukranian</a></li>
+     <li><a href="#!" value="vi">Vietnamese</a></li>
    </ul>
-         
+  </section>    
 
   <section class="center-align">
     <h2><a href="past_meetings.html">Look up past meetings</a></h2>
