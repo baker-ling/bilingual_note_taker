@@ -10,6 +10,48 @@ const PAST_MEETING_ID_SEARCH_PARAM_KEY = "past_meeting_name";
 const inputText = document.getElementById("txt");
 const myButton = document.getElementsByClassName("insert-below-butto");
 
+
+// objects for converting langauge codes to names and vice-versa
+const langCodesToNames = {
+  "en": "English",
+  "ar": "Arabic",
+  "zh": "Chinese",
+  "fr": "French",
+  "de": "German",
+  "hi": "Hindi",
+  "id": "Indonesian",
+  "ga": "Irish",
+  "it": "Italian",
+  "ja": "Japanese",
+  "ko": "Korean",
+  "pl": "Polish",
+  "pt": "Portuguese",
+  "ru": "Russian",
+  "es": "Spanish",
+  "tr": "Turkish",
+  "vi": "Vietnamese"
+};
+
+const langNamesToCodes = {
+  "English": "en",
+  "Arabic": "ar",
+  "Chinese": "zh",
+  "French": "fr",
+  "German": "de",
+  "Hindi": "hi",
+  "Indonesian": "id",
+  "Irish": "ga",
+  "Italian": "it",
+  "Japanese": "ja",
+  "Korean": "ko",
+  "Polish": "pl",
+  "Portuguese": "pt",
+  "Russian": "ru",
+  "Spanish": "es",
+  "Turkish": "tr",
+  "Vietnamese": "vi"
+};
+
 /**
  * Callback function for original note textareas to automatically
  * translate contents.
