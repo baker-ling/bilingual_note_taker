@@ -9,3 +9,15 @@ const PAST_MEETING_ID_SEARCH_PARAM_KEY = "past_meeting_name";
 
 const inputText = document.getElementById("txt");
 const myButton = document.getElementsByClassName("insert-below-button");
+
+let options = [];
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.dropdown-trigger');
+    let instances = M.Dropdown.init(elems, options);
+  });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.dropdown-trigger2');
+    let instances = M.Dropdown.init(elems, options);
+  });
