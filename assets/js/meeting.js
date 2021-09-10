@@ -39,11 +39,11 @@ function getTargetTextarea(sourceTextarea) {
 
 
 //Exit button bottom redirecting to past_meetings.html
-const bottomExitbutton = document.getElementById("exit-button-bottom");
-bottomExitbutton.addEventListener("click"),
+const bottomExitButton = document.getElementById("exit-button-bottom");
+bottomExitButton.addEventListener("click",
   function () {
     location.href = "./past_meetings.html";
-  };
+  });
 
 let saveMeetingEl = document.querySelector("#save-button-bottom");
 //global
