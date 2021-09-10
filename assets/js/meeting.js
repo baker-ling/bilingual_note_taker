@@ -25,7 +25,6 @@ async function translateTextarea(sourceTextarea) {
   targetTextarea.value = translationText;
 }
 
-
 /**
  * Returns the textarea element that is supposed to hold the translation
  * for the given source text textarea element.
@@ -36,8 +35,6 @@ function getTargetTextarea(sourceTextarea) {
   return sourceTextarea.parentElement.querySelector(".note-translation");
 }
 
-
-
 //Exit button bottom redirecting to past_meetings.html
 const bottomExitButton = document.getElementById("exit-button-bottom");
 bottomExitButton.addEventListener("click",
@@ -46,57 +43,10 @@ bottomExitButton.addEventListener("click",
   });
 
 let saveMeetingEl = document.querySelector("#save-button-bottom");
-//global
-let pantryId = "238364cb-50ff-45e2-8f91-9e2d44b71215";
-let meetingsArr = JSON.parse(localStorage.getItem("meetingsArr")) || [];
-//code to shuffle array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}
-//code to create an identifier
-function createIdentifier() {
-  let arr = [];
-  for (let i = 0; i <= 2; i++) {
-    let lower = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-    let upper = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-    let num = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-    arr.push(lower, upper, num);
-  }
-  shuffleArray(arr);
-  return arr.join("");
-}
+let pantryKey = "238364cb-50ff-45e2-8f91-9e2d44b71215";
 
-//save the return from function to a variable
-let identifier = createIdentifier();
-console.log(identifier);
-
-//calls functions to save past meeting obj to localStorage and Pantry then redirects to past_meeting.html
-function save() {
-  saveToLocal();
-  saveToPantry();
-}
-
-//function to save to localStorage
-function saveToLocal() {
-  let meetingMetadata = {
-    //To add variables
-    title: "",
-    lastUpdated: "",
-    sourceLang: "",
-    targetLanguage: "",
-    pantryId: identifier,
-  };
-  meetingsArr.push(meetingMetadata);
-  localStorage.setItem("meetingsArr", JSON.stringify(meetingsArr));
-  location.assign("./past_meetings.html");
-  displayPastMeetingsList();
-}
-saveMeetingEl.addEventListener("click", save);
+//add event listener to save meeting button
+saveMeetingEl.addEventListener("click", saveToPantry);
 
 //function to POST to Pantry
 async function saveToPantry() {
@@ -112,7 +62,7 @@ async function saveToPantry() {
     }
   );
   const data = await response.text();
-  console.log(data);
+  location.assign("./past_meetings.html");
 }
 //function to DELETE from Pantry
 async function deleteNotes() {
