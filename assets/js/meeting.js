@@ -25,27 +25,6 @@ async function translateTextarea(sourceTextarea) {
   targetTextarea.value = translationText;
 }
 
-/**
- * Gets a machine translation from libretranslate.de
- * @param {string} sourceText - Text to be translated
- * @param {string} sourceLanguage - Language of text to be translated
- * @param {string} targetLanguage - Language to be translated into
- * @returns {string} Machine translation result.
- */
-async function getTranslation(sourceText, sourceLanguage, targetLanguage) {
-  const requestResult = await fetch("https://libretranslate.de/translate", {
-    method: "POST",
-    body: JSON.stringify({
-      q: sourceText,
-      source: sourceLanguage,
-      target: targetLanguage,
-    }),
-    headers: { "Content-type": "application/json" },
-  });
-
-  const data = await requestResult.json();
-  return data.translatedText;
-}
 
 /**
  * Returns the textarea element that is supposed to hold the translation
@@ -57,15 +36,7 @@ function getTargetTextarea(sourceTextarea) {
   return sourceTextarea.parentElement.querySelector(".note-translation");
 }
 
-function getSourceLanguage() {
-  // TODO implement proper logic for getSourceLanguage
-  return "en";
-}
 
-function getTargetLanguage() {
-  // TODO implement proper logic for getTargetLanguage
-  return "es";
-}
 
 //Exit button bottom redirecting to past_meetings.html
 const bottomExitbutton = document.getElementById("exit-button-bottom");
