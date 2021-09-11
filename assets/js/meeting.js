@@ -16,9 +16,11 @@ function translateTextareaCallback(event) {
 }
 
 /**
- * 
+ * Inserts a row after the given row or at the end of the list.
+ * @param {HTMLDivElement|null} currentRow 
+ * @returns {HTMLDivElement} - the row that was added
  */
-function insertRow(currentRow) {
+function insertRow(currentRow = null) {
   //construct new row
   let RowElement = document.createElement("div");
   RowElement.className = "line-item row";
@@ -41,7 +43,7 @@ function insertRow(currentRow) {
             </a>`;
          
   // insert between currentRow and the row that follows it
-  nextRow = (currentRow) ? currentRow.nextSibling : null; 
+  let nextRow = (currentRow) ? currentRow.nextSibling : null; 
   mainElement.insertBefore(RowElement, nextRow);
   return RowElement;
 }
@@ -256,7 +258,7 @@ function showMeetingLastUpdated(){
 function loadingPastMeetingCheck() {
   // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
   // the meetings in localStorage
-  
+
 }
 
 function initMeeting() {
