@@ -4,8 +4,9 @@ const myButton = document.getElementsByClassName("insert-below-button");
 let startMeetingEl = document.querySelector("#start-meeting");
 let dropdown2 = document.querySelector(".dropdown-trigger2");
 let dropdown1 = document.querySelector(".dropdown-trigger");
+
 //global
-let meetingsArr = JSON.parse(localStorage.getItem("meetingsArr")) || [];
+
 let meetingMetadata = {
   //To add variables
 };
@@ -29,7 +30,7 @@ function shuffleArray(array) {
     array[j] = temp;
   }
 }
-//code to create an identifier
+//code to create an identifier to use for storing meeting contents online in Pantry
 function createIdentifier() {
   let arr = [];
   for (let i = 0; i <= 2; i++) {
@@ -47,7 +48,7 @@ let identifier = createIdentifier();
 meetingMetadata.pantryId = identifier;
 
 //function get source language
-function getSourceLanguage() {
+function attachSourceLanguageDropdownCallback() {
   let sourceDropdown = document.querySelector("#dropdown1");
   sourceDropdown.addEventListener("click", function (e) {
     let sourceLang = e.target.innerText;
@@ -56,46 +57,54 @@ function getSourceLanguage() {
     return sourceLang;
   });
 }
-function getTargetLanguage() {
+function attachTargetLanguageDropdownCallback() {
   let sourceDropdown = document.querySelector("#dropdown2");
   sourceDropdown.addEventListener("click", function (e) {
     let targetLang = e.target.innerText;
     dropdown2.innerText = targetLang;
     meetingMetadata.targetLanguage = targetLang;
-    console.log(targetLang);
     return targetLang;
   });
 }
-getSourceLanguage();
-getTargetLanguage();
+attachSourceLanguageDropdownCallback();
+attachTargetLanguageDropdownCallback();
 
-//function to save to localStorage
-function saveToLocal() {
-  meetingsArr.push(meetingMetadata);
-  localStorage.setItem("meetingsArr", JSON.stringify(meetingsArr));
+//function to meeting metadata to sessionStorage for persistence across different pages
+function saveCurrentMeetingToSessionStorage() {
+  // meetingsArr.push(meetingMetadata);
+  sessionStorage.setItem(
+    CURRENT_MEETING_SESSION_KEY,
+    JSON.stringify(meetingMetadata)
+  );
+}
+
+function addModal(){
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems, options);
 }
 
 function startMeeting(event) {
   event.preventDefault();
-  getSourceLanguage();
-  getTargetLanguage();
   let meetingName = inputText.value.trim();
   if (!meetingName) {
+    //todo add a modal warning
     inputText.setAttribute("placeholder", "Please Enter a Name!");
     return;
   }
   // code to check user chooses language option
   if (
-    typeof getSourceLanguage() === "undefined" ||
-    typeof getSourceLanguage() === "undefined"
+    typeof meetingMetadata.targetLanguage === "undefined" ||
+    typeof meetingMetadata.sourceLanguage === "undefined"
   ) {
-    alert("Please choose the language options"); //replace with Modal
+    
+    addModal();
+    //alert("Please choose the language options"); //replace with Modal
     return;
   }
   meetingMetadata.name = meetingName;
   console.log(meetingMetadata);
+  saveCurrentMeetingToSessionStorage();
   location.assign("./meeting.html");
-  saveToLocal();
 }
 
 startMeetingEl.addEventListener("click", startMeeting);

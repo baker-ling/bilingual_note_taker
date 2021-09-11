@@ -19,27 +19,19 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
-<<<<<<< Updated upstream
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>         
-  <!--Title of project-->
-  <title>Bilingual Meeting Note Taker</title>
-  <link rel="stylesheet" href="./assets/css/reset.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-=======
+  <nav>
+    <div class="nav-wrapper indigo darken-4">
+      <a href="#" class="brand-logo">Bilingual Note Taker</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="meeting.html">Meeting</a></li>
+        <li><a href="past_meetings.html">Past Meeting</a></li>
+      </ul>
+    </div>
+  </nav>
+        
+
   <body class="container orange lighten-5">
-    <header>
-      <h1 class="indigo-text text-darken-4 center-align">Title</h1>
-    </header>
->>>>>>> Stashed changes
 
     <section class="center-align">
       <form name="new-meeting" action="">
@@ -52,41 +44,12 @@
         <section>
           <!-- Dropdown Trigger -->
           <a
-            class="dropdown-trigger btn deep-orange lighten-2"
+            class="dropdown-trigger btn cyan lighten-2"
             href="#"
             data-target="dropdown1"
             >Choose Language</a
           >
 
-<<<<<<< Updated upstream
-  <section class="center-align">
-    <form name="new-meeting" action="">
-      <h2>Start a new meeting</h2>
-      <input type="text" id="meeting-name-input" placeholder="Name of your meeting">
-      <select id="language1-select">
-        <option disabled selected>Select your language</option>
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
-      <select id="language2-select">
-        <option disabled selected>Select a language to translate to</option>
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
-      <a href="meeting.html" onclick="pageRedirect()" class="btn indigo darken-4 waves-effect waves-light">Start Meeting</a>
-    </form>
-  </section>
-
-  <section class="center-align">
-    <h2><a href="past_meetings.html">Look up past meetings</a></h2>
-  </section>
-
-
-  <script src="./assets/js/script.js"></script>
-</body>
-
-</html>
-=======
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
             <li><a href="#!" value="ar">Arabic</a></li>
@@ -115,7 +78,7 @@
 
           <!-- Dropdown Trigger -->
           <a
-            class="dropdown-trigger2 btn deep-orange lighten-2"
+            class="dropdown-trigger2 btn cyan lighten-2"
             href="#"
             data-target="dropdown2"
             >Choose translation</a
@@ -148,15 +111,30 @@
           </ul>
         </section>
         <br />
+        <!--Start button and Modal Trigger -->
         <a
           href=""
           id="start-meeting"
-          class="btn indigo darken-4 waves-effect waves-light"
+          
+          data-target="modal1"
+          class="btn indigo darken-4 waves-effect waves-light modal-trigger"
           >Start Meeting</a
         >
+        
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Before you start your meeting...</h4>
+            <p>Please choose language options</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+      </section>
       </form>
     </section>
-
+    
     <!-- <section class="center-align">
       <h2><a href="past_meetings.html">Look up past meetings</a></h2>
     </section> -->
@@ -168,4 +146,3 @@
     <script src="./assets/js/index.js"></script>
   </body>
 </html>
->>>>>>> Stashed changes
