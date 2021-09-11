@@ -209,19 +209,6 @@ async function displayPastMeeting() {
   }
 }
 
-/**
- * Checks if we are supposed to be displaying a meeting whose id is passed to meeting.html as a URL search parameter
- * @returns {boolean}
- */
-function checkForPastMeetingSearchParam() {
-  return (
-    window.location.pathname.toString().endsWith("meeting.html") &&
-    new URLSearchParams(window.location.search).has(
-      PAST_MEETING_ID_SEARCH_PARAM_KEY
-    )
-  ); // todo make sure this fits the code for loading past meetings
-}
-
 function initPastMeeting() {
   // todo fix to get from session storage instead
   const meeting = getPastMeetingById(meetingId); // todo make sure that this integrates with what Samira is working on
@@ -256,8 +243,8 @@ function showMeetingLastUpdated(){
 }
 
 function loadingPastMeetingCheck() {
-  // todo implement using URLSearchParam from past_meetings.html
-  // Brian will write  
+  // todo move declaration from here and past_meeting.js to utils.js
+  return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
 
 function initMeeting() {
@@ -269,11 +256,3 @@ function initMeeting() {
 }
 
 initMeeting();
-// /**
-//  * Code to intialize meeting.html
-//  */
-// if (checkForPastMeetingSearchParam()) {
-//   initPastMeeting();
-// } else {
-//   initNewMeeting(); // todo make sure that this call matches what Cooper is working on
-// }
