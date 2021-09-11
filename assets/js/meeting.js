@@ -136,9 +136,6 @@ async function saveToPantry() {
     }
   );
   const data = await response.text();
-  //call toast function
-  location.assign("./past_meetings.html");
-  // todo update array in localStorage
 }
 
 //function to DELETE from Pantry
