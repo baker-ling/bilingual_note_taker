@@ -111,15 +111,30 @@
           </ul>
         </section>
         <br />
+        <!--Start button and Modal Trigger -->
         <a
           href=""
           id="start-meeting"
-          class="btn indigo darken-4 waves-effect waves-light"
+          
+          data-target="modal1"
+          class="btn indigo darken-4 waves-effect waves-light modal-trigger"
           >Start Meeting</a
         >
+        
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Before you start your meeting...</h4>
+            <p>Please choose language options</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+      </section>
       </form>
     </section>
-
+    
     <!-- <section class="center-align">
       <h2><a href="past_meetings.html">Look up past meetings</a></h2>
     </section> -->
