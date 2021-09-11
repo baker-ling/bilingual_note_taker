@@ -23,3 +23,16 @@ function displayPastMeetingsList() {
   }
 }
 
+//function to GET(retrieve notes) from Pantry using identifier
+async function getNotesFromPantry() {
+  let response = await fetch(
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
+    {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+    }
+  );
+  const data = await response.json();
+  console.log(data.notes);
+  return data.notes;
+}
