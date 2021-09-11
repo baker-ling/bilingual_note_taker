@@ -1,5 +1,5 @@
-const pantryKey = "238364cb-50ff-45e2-8f91-9e2d44b71215";
-let meetingMetadata;
+const PANTRY_KEY = "238364cb-50ff-45e2-8f91-9e2d44b71215";
+const meetingMetadata = JSON.parse(sessionStorage.getItem(CURRENT_MEETING_SESSION_KEY));
 
 // Elements from DOM
 const mainElement = document.querySelector('main');
@@ -15,7 +15,12 @@ function translateTextareaCallback(event) {
   translateTextarea(event.target);
 }
 
-function insertRow(currentRow) {
+/**
+ * Inserts a row after the given row or at the end of the list.
+ * @param {HTMLDivElement|null} currentRow 
+ * @returns {HTMLDivElement} - the row that was added
+ */
+function insertRow(currentRow = null) {
   //construct new row
   let RowElement = document.createElement("div");
   RowElement.className = "line-item row";
@@ -34,27 +39,27 @@ function insertRow(currentRow) {
             </a>
             
           <a href="#" class="btn-floating orange">
-                <i class="material-icons white-text">edit</i>
+                <i class="translate-button material-icons white-text">edit</i>
             </a>`;
          
-  // //todo add callbacks for delete and edit
-  // // insert after new row
- 
-  mainElement.insertBefore(RowElement, currentRow.nextSibling); 
-    
+  // insert between currentRow and the row that follows it
+  let nextRow = (currentRow) ? currentRow.nextSibling : null; 
+  mainElement.insertBefore(RowElement, nextRow);
+  return RowElement;
 }
 
 function mainElementonclickListener(event) {
   console.log(event)
   if (event.target.classList.contains("insert-below-button")) {
-    let currentRow = event.target;
-    currentRow = event.target.closest("div");
+    let currentRow = event.target.closest("div");
     insertRow(currentRow);
-  } 
-  else if(event.target.classList.contains("delete-button")) {
-    let currentRow = event.target;
-    currentRow = event.target.closest("div");
+  } else if (event.target.classList.contains("delete-button")) {
+    let currentRow = event.target.closest("div");
     deleteRow(currentRow);
+  } else if (event.target.classList.contains("translate-button")) {
+    let currentRow = event.target.closest("div");
+    let sourceTextarea = currentRow.querySelector('.note-source');
+    translateTextarea(sourceTextarea);
   }
 }
 mainElement.addEventListener("click", mainElementonclickListener);
@@ -112,7 +117,7 @@ saveMeetingEl.addEventListener("click", saveToPantry);
 //function to POST to Pantry
 async function saveToPantry() {
   const response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${identifier}`,
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
     {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -124,12 +129,13 @@ async function saveToPantry() {
   );
   const data = await response.text();
   location.assign("./past_meetings.html");
+  // todo update array in localStorage
 }
 
 //function to DELETE from Pantry
 async function deleteNotes() {
   const response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${identifier}`,
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
     {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
@@ -142,7 +148,7 @@ async function deleteNotes() {
 //function to PUT(update notes) in Pantry
 async function updateNotes() {
   const response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${identifier}`,
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
     {
       method: "PUT",
       headers: { "Content-type": "application/json" },
@@ -157,7 +163,7 @@ async function updateNotes() {
 //function to GET(retrieve notes) from Pantry
 async function getNotes() {
   let response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${identifier}`,
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
     {
       method: "GET",
       headers: { "Content-type": "application/json" },
@@ -165,41 +171,46 @@ async function getNotes() {
   );
   const data = await response.json();
   console.log(data.notes);
+  return data.notes;
+}
+
+/**
+ * Returns an array of strings for all of the source text notes.
+ */
+function getNotesFromCurrentMeeting() {
+  const notes = [];
+  document.querySelectorAll('.note-source').forEach(note => {
+    notes.push(note);
+  });
+  return notes;
 }
 
 
 /**
- * Displays a past meeting.
- * @param {Object} meeting - Past meeting object with its notes included.
+ * Displays a past meeting based on meeting.metadata
  */
- function displayPastMeeting(meeting) {
-  showMeetingTitle(meeting.title); // TODO make sure this exists
-  showMeetingLanguages(meeting.sourceLang, meeting.targetLang); // TODO I am assuming that this function would also display those languages above each column of notes
-  showMeetingLastUpdated(meeting.lastUpdated); // TODO make sure this exists
-  for (const note of meeting.notes) {
-    const sourceTextarea = addNoteRow();
-    sourceTextarea.value = note; // TODO check if this would trigger an onchange event listener
+async function displayPastMeeting() {
+  const notes = await getNotes();
+  showMeetingTitle();
+  showMeetingLanguages(); 
+  showMeetingLastUpdated();
+  
+  // clear all children from main element
+  while (mainElement.firstChild) {
+    mainElement.removeChild(mainElement.firstChild);
+  }
+
+  // add row to main element for each note
+  for (const note of notes) {
+    const rowElement = insertRow();
+    const sourceTextarea = rowElement.querySelector('.note-source');
+    sourceTextarea.value = note;
     translateTextarea(sourceTextarea);
   }
 }
 
-/**
- * Checks if we are supposed to be displaying a meeting whose id is passed to meeting.html as a URL search parameter
- * @returns {boolean}
- */
-function checkForPastMeetingSearchParam() {
-  return (
-    window.location.pathname.toString().endsWith("meeting.html") &&
-    new URLSearchParams(window.location.search).has(
-      PAST_MEETING_ID_SEARCH_PARAM_KEY
-    )
-  ); // todo make sure this fits the code for loading past meetings
-}
-
 function initPastMeeting() {
-  const meetingId = new URLSearchParams(window.location.search).get(
-    PAST_MEETING_ID_SEARCH_PARAM_KEY
-  );
+  // todo fix to get from session storage instead
   const meeting = getPastMeetingById(meetingId); // todo make sure that this integrates with what Samira is working on
   displayPastMeeting(meeting);
 }
@@ -207,34 +218,43 @@ function initPastMeeting() {
 function initNewMeeting() {
   meetingMetadata = sessionStorage.getItem(CURRENT_MEETING_SESSION_KEY);
   showMeetingTitle(meetingMetadata.title);
-  showMeetingLanguages(meetingMetadata.sourceLanguage, meetingMetadata.targetLanguage);
-
+  showMeetingLanguages();
 }
 
 /**
- * Displays the title given at the top of the page
- * @param {string} title 
+ * Displays the title based on meetingMetadata at the top of the page
  */
-function showMeetingTitle(title) {
-  meetingTitleEl.textContent = title;
+function showMeetingTitle() {
+  meetingTitleEl.textContent = meetingMetadata.name;
 }
 
 /**
- * Shows the source language and target language at the top of the slide
- * @param {string} sourceLanguage 
- * @param {string} targetLanguage 
+ * Shows the source language and target language at the top of the slide based on meetingMetadata 
  */
-function showMeetingLanguages(sourceLanguage, targetLanguage) {
+function showMeetingLanguages() {
   // TODO implement after MVP
 }
 
+/**
+ * Shows when the meeting was last updated based on meetingMetadata
+ */
+function showMeetingLastUpdated(){
+  // todo
+}
+
+function loadingPastMeetingCheck() {
+  // todo move declaration from here and past_meeting.js to utils.js
+  return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
+}
+
 function initMeeting() {
-  if (loadingPastMeeting()) {
+  if (loadingPastMeetingCheck()) {
     initPastMeeting();
   } else {
     initNewMeeting();
   }
 }
+
 
 /*toast popup when save is clicked*/
 saveMeetingEl.addEventListener("click", toastPopUp);
@@ -254,3 +274,6 @@ function toastPopUp() {
 // } else {
 //   initNewMeeting(); // todo make sure that this call matches what Cooper is working on
 // }
+
+initMeeting();
+

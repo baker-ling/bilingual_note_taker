@@ -30,7 +30,7 @@ function shuffleArray(array) {
     array[j] = temp;
   }
 }
-//code to create an identifier
+//code to create an identifier to use for storing meeting contents online in Pantry
 function createIdentifier() {
   let arr = [];
   for (let i = 0; i <= 2; i++) {
@@ -70,7 +70,7 @@ function attachTargetLanguageDropdownCallback() {
 attachSourceLanguageDropdownCallback();
 attachTargetLanguageDropdownCallback();
 
-//function to save to localStorage
+//function to meeting metadata to sessionStorage for persistence across different pages 
 function saveCurrentMeetingToSessionStorage() {
   // meetingsArr.push(meetingMetadata);
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(meetingMetadata));
