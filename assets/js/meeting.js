@@ -243,7 +243,6 @@ function showMeetingLastUpdated(){
 }
 
 function loadingPastMeetingCheck() {
-  // todo move declaration from here and past_meeting.js to utils.js
   return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
 
