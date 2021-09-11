@@ -256,9 +256,8 @@ function showMeetingLastUpdated(){
 }
 
 function loadingPastMeetingCheck() {
-  // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
-  // the meetings in localStorage
-
+  // todo implement using URLSearchParam from past_meetings.html
+  // Brian will write  
 }
 
 function initMeeting() {
