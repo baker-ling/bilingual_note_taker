@@ -12,7 +12,20 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
+<nav>
+    <div class="nav-wrapper indigo darken-4">
+      <a href="#" class="brand-logo">Bilingual Note Taker</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="meeting.html">Meeting</a></li>
+        <li><a href="past_meetings.html">Past Meeting</a></li>
+      </ul>
+    </div>
+  </nav>
+
 <body class="container orange lighten-5">
+
     <header>
         <h1 class="center-align">Bilingual Meeting Note Taker</h1>
         <h2 id="meeting-title">Meeting Title</h2>   
@@ -48,15 +61,20 @@
     <br>
     <footer>
 
-        <!--Save and delete Notes-->
+    <!--Save and delete Notes-->
 
-        <!--save-button-bottom-->
-        <a href="#" id="save-button-bottom" class="btn indigo waves-effect waves-light">
-            <span>Save Meeting</span>
-            <i class="material-icons right white-text">save</i>
-        </a>
+    <!--save-button-bottom-->
+    <a href="#" id="save-button-bottom" class="btn indigo waves-effect waves-light">
+        <span>Save Meeting</span>
+        <i class="material-icons right white-text">save</i>
+    </a>
       
-      <button id="exit-button-bottom">Exit Meeting</button>
+    <!--exit meeting-->
+    <a href="#" id="exit-button-bottom" class="btn indigo waves-effect waves-light">
+        <span>Exit Meeting</span>
+        <i class="material-icons right white-text">exit_to_app</i>
+    </a>
+      
     </footer>
     
     <script src="./assets/js/utils.js"></script>
