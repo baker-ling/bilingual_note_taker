@@ -1,6 +1,7 @@
 // Global constants for various keys
 const PAST_MEETINGS_LS_KEY = "past_meetings"; // TODO: Make sure same keys is used for storing past meeting metadata in local storage
 const PAST_MEETING_ID_SEARCH_PARAM_KEY = "past_meeting_name";
+const CURRENT_MEETING_SESSION_KEY = 'current_meeting';
 
 // objects for converting langauge codes to names and vice-versa
 const langCodesToNames = {
@@ -67,12 +68,12 @@ async function getTranslation(sourceText, sourceLanguage, targetLanguage) {
   }
 
 
-  function getSourceLanguage() {
+  function getSourceLanguageForCurrentMeeting() {
     // TODO implement proper logic for getSourceLanguage
     return "en";
   }
   
-  function getTargetLanguage() {
+  function getTargetLanguageForCurrentMeeting() {
     // TODO implement proper logic for getTargetLanguage
     return "es";
   }
