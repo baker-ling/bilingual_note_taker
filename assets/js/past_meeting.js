@@ -1,5 +1,3 @@
-const PAST_MEETING_URLSEARCHPARAM_FLAG = "?past_meeting=true";
-
 function displayPastMeetingsList() {
   const pastMeetingsJSON = localStorage.getItem(PAST_MEETINGS_LS_KEY);
   const pastMeetings = JSON.parse(pastMeetingsJSON);
