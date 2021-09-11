@@ -236,6 +236,16 @@ function initMeeting() {
   }
 }
 
+/*toast popup when save is clicked*/
+saveMeetingEl.addEventListener("click", toastPopUp);
+
+function toastPopUp() {
+  let toastHTML = '<span>Save successful!</span><button';
+  M.toast({html: toastHTML, classes: 'rounded'});
+
+}
+
+
 // /**
 //  * Code to intialize meeting.html
 //  */
