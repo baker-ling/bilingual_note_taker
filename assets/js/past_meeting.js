@@ -35,3 +35,5 @@ function pastMeetingListOnclickHandler(event) {
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(clickedMeeting.dataset));
   window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
+
+displayPastMeetingsList();
