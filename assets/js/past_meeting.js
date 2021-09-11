@@ -33,7 +33,28 @@ function pastMeetingListOnclickHandler(event) {
   // and transition to meeting.html with a flag to indicate that we are loading a past meeting 
   const clickedMeeting = event.target;
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(clickedMeeting.dataset));
-  window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
+  c
 }
 
-displayPastMeetingsList();
+function openPastMeetingFromUserEnteredCode(event) {
+  event.preventDefault();
+  //get meeting identifier from input field
+  const codeInputElement = document.getElementById("meeting-code-input");
+  const codeInputText = codeInputElement.value.trim();
+
+  //todo make sure that meeting exists
+  //put meeting id into session storage
+  const metaData = {pantryId: codeInputText};
+  sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(metaData));
+
+  //transition to meeting.html
+
+  window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
+
+
+}
+
+const lookUpMeetingForm = document.querySelector("form");
+lookUpMeetingForm.addEventListener("submit", openPastMeetingFromUserEnteredCode);
+const lookUpMeetingButton = document.querySelector("a.btn");
+lookUpMeetingButton.addEventListener("click", openPastMeetingFromUserEnteredCode);
