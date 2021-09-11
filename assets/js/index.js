@@ -6,7 +6,7 @@ let dropdown2 = document.querySelector(".dropdown-trigger2");
 let dropdown1 = document.querySelector(".dropdown-trigger");
 
 //global
-let meetingsArr = JSON.parse(localStorage.getItem("meetingsArr")) || [];
+
 let meetingMetadata = {
   //To add variables
 };
@@ -63,21 +63,22 @@ function attachTargetLanguageDropdownCallback() {
     let targetLang = e.target.innerText;
     dropdown2.innerText = targetLang;
     meetingMetadata.targetLanguage = targetLang;
-    console.log(targetLang);
     return targetLang;
   });
 }
 attachSourceLanguageDropdownCallback();
 attachTargetLanguageDropdownCallback();
 
-//function to meeting metadata to sessionStorage for persistence across different pages 
+//function to meeting metadata to sessionStorage for persistence across different pages
 function saveCurrentMeetingToSessionStorage() {
   // meetingsArr.push(meetingMetadata);
-  sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(meetingMetadata));
+  sessionStorage.setItem(
+    CURRENT_MEETING_SESSION_KEY,
+    JSON.stringify(meetingMetadata)
+  );
 }
 
 function startMeeting(event) {
-
   event.preventDefault();
   let meetingName = inputText.value.trim();
   if (!meetingName) {
