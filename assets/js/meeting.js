@@ -172,6 +172,17 @@ async function getNotes() {
   return data.notes;
 }
 
+/**
+ * Returns an array of strings for all of the source text notes.
+ */
+function getNotesFromCurrentMeeting() {
+  const notes = [];
+  document.querySelectorAll('.note-source').forEach(note => {
+    notes.push(note);
+  });
+  return notes;
+}
+
 
 /**
  * Displays a past meeting based on meeting.metadata
@@ -239,11 +250,17 @@ function showMeetingLanguages() {
  * Shows when the meeting was last updated based on meetingMetadata
  */
 function showMeetingLastUpdated(){
+  // todo
+}
 
+function loadingPastMeetingCheck() {
+  // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
+  // the meetings in localStorage
+  
 }
 
 function initMeeting() {
-  if (loadingPastMeeting()) {
+  if (loadingPastMeetingCheck()) {
     initPastMeeting();
   } else {
     initNewMeeting();
