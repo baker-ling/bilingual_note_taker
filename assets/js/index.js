@@ -76,6 +76,11 @@ function saveCurrentMeetingToSessionStorage() {
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(meetingMetadata));
 }
 
+function addModal(){
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems, options);
+}
+
 function startMeeting(event) {
 
   event.preventDefault();
@@ -90,7 +95,9 @@ function startMeeting(event) {
     typeof meetingMetadata.targetLanguage === "undefined" ||
     typeof meetingMetadata.sourceLanguage === "undefined"
   ) {
-    alert("Please choose the language options"); //replace with Modal
+    
+    addModal();
+    //alert("Please choose the language options"); //replace with Modal
     return;
   }
   meetingMetadata.name = meetingName;
