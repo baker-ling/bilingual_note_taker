@@ -28,6 +28,20 @@ function displayPastMeetingsList() {
   }
 }
 
+//function to GET(retrieve notes) from Pantry using identifier
+async function getNotesFromPantry() {
+  let response = await fetch(
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
+    {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+    }
+  );
+  const data = await response.json();
+  console.log(data.notes);
+  return data.notes;
+}
+
 function pastMeetingListOnclickHandler(event) {
   // get meeting metadata from anchor element that was clicked, put it in session storage,
   // and transition to meeting.html with a flag to indicate that we are loading a past meeting 
@@ -58,3 +72,4 @@ const lookUpMeetingForm = document.querySelector("form");
 lookUpMeetingForm.addEventListener("submit", openPastMeetingFromUserEnteredCode);
 const lookUpMeetingButton = document.querySelector("a.btn");
 lookUpMeetingButton.addEventListener("click", openPastMeetingFromUserEnteredCode);
+
