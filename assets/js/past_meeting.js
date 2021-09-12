@@ -69,8 +69,12 @@ function openPastMeetingFromUserEnteredCode(event) {
   window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
 
-const lookUpMeetingForm = document.querySelector("form");
-lookUpMeetingForm.addEventListener("submit", openPastMeetingFromUserEnteredCode);
-const lookUpMeetingButton = document.querySelector("a.btn");
-lookUpMeetingButton.addEventListener("click", openPastMeetingFromUserEnteredCode);
+function initPastMeetingsPage() {
+  const lookUpMeetingForm = document.querySelector("form");
+  lookUpMeetingForm.addEventListener("submit", openPastMeetingFromUserEnteredCode);
+  const lookUpMeetingButton = document.querySelector("a.btn");
+  lookUpMeetingButton.addEventListener("click", openPastMeetingFromUserEnteredCode);
+  displayPastMeetingsList();
+}
 
+initPastMeetingsPage();
