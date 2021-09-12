@@ -9,7 +9,7 @@ let meetingsMetadataArray =
 const mainElement = document.querySelector("main");
 const saveMeetingEl = document.querySelector("#save-button-bottom");
 const meetingTitleEl = document.querySelector("#meeting-title");
-
+const notesArray = [];
 /**
  * Callback function for original note textareas to automatically
  * translate contents.
@@ -136,9 +136,6 @@ async function saveToPantry() {
     }
   );
   const data = await response.text();
-  //call toast function
-  location.assign("./past_meetings.html");
-  // todo update array in localStorage
 }
 
 //function to DELETE from Pantry
@@ -152,7 +149,6 @@ async function deleteNotesFromPantry() {
     }
   );
   const data = await response.text();
-  console.log(data);
 }
 //function to PUT(update notes) in Pantry
 async function updateNotesOnPantry() {
@@ -167,33 +163,17 @@ async function updateNotesOnPantry() {
     }
   );
   const data = await response.text();
-  console.log(data);
-}
-//function to GET(retrieve notes) from Pantry
-async function getNotesFromPantry() {
-  let response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
-    {
-      method: "GET",
-      headers: { "Content-type": "application/json" },
-    }
-  );
-  const data = await response.json();
-  console.log(data.notes);
-  return data.notes;
 }
 
 /**
  * Returns an array of strings for all of the source text notes.
  */
 function getNotesFromCurrentMeeting() {
-  const notes = [];
   document.querySelectorAll(".note-source").forEach((note) => {
-    notes.push(note.value.trim());
+    notesArray.push(note.value.trim());
   });
   return notes;
 }
-
 /**
  * Displays a past meeting based on meeting.metadata
  */
