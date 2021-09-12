@@ -7,19 +7,27 @@ function displayPastMeetingsList() {
   while (pastMeetingsUL.firstChild) {
     pastMeetingsUL.removeChild(pastMeetingsUL.firstChild);
   }
-
-  //add list items for each meeting
-  for (const meeting of pastMeetings) {
-    const pastMeetingMetadata = meeting.meetingMetadata
+  
+  if (pastMeetings.length === 0) {
     const listItem = document.createElement("li");
-    const listItemAnchor = document.createElement("a");
-    listItemAnchor.textContent = `${pastMeetingMetadata.name} — ${pastMeetingMetadata.pantryId}`; // todo make sure date displays correctly
-    listItemAnchor.dataset.name = pastMeetingMetadata.name;
-    listItemAnchor.dataset.pantryId = pastMeetingMetadata.pantryId;
-    listItemAnchor.dataset.sourceLanguage = pastMeetingMetadata.sourceLanguage;
-    listItemAnchor.dataset.targetLanguage = pastMeetingMetadata.targetLanguage;
-    listItem.appendChild(listItemAnchor);
-    pastMeetingsUL.appendChild(listItem);
+    listItem.textContent = "No meeting notes have been saved with this device.";
+    pastMeetingsUL.appendChild(listItem)
+  } else {
+    //add list items for each meeting
+    for (const meeting of pastMeetings) {
+      const pastMeetingMetadata = meeting.meetingMetadata
+      const listItem = document.createElement("li");
+      const listItemAnchor = document.createElement("a");
+      listItemAnchor.textContent = `${pastMeetingMetadata.name} — ${pastMeetingMetadata.pantryId}`; // todo make sure date displays correctly
+      listItemAnchor.dataset.name = pastMeetingMetadata.name;
+      listItemAnchor.dataset.pantryId = pastMeetingMetadata.pantryId;
+      listItemAnchor.dataset.sourceLanguage = pastMeetingMetadata.sourceLanguage;
+      listItemAnchor.dataset.targetLanguage = pastMeetingMetadata.targetLanguage;
+      listItem.appendChild(listItemAnchor);
+      pastMeetingsUL.appendChild(listItem);
+    }
+    // attach event listener to pastMeetingsUL
+    pastMeetingsUL.addEventListener("click", pastMeetingListOnclickHandler);
   }
 }
 
