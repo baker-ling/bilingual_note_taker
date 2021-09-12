@@ -7,22 +7,17 @@ function displayPastMeetingsList() {
   while (pastMeetingsUL.firstChild) {
     pastMeetingsUL.removeChild(pastMeetingsUL.firstChild);
   }
+
   //add list items for each meeting
   for (const meeting of pastMeetings) {
+    const pastMeetingMetadata = meeting.meetingMetadata
     const listItem = document.createElement("li");
     const listItemAnchor = document.createElement("a");
-    // listItemAnchor.setAttribute(
-    //   "href",
-    //   `meeting.html?${PAST_MEETING_ID_SEARCH_PARAM_KEY}=${encodeURI(
-    //     meeting.pantryId
-    //   )}`
-    // ); // todo make link works and that .name attribute is correct
-    listItemAnchor.textContent = `${meeting.name} — ${meeting.date} — ${meeting.pantryId}`; // todo make sure date displays correctly
-    listItemAnchor.dataset.name = meeting.name;
-    listItemAnchor.dataset.pantryId = meeting.pantryId;
-    listItemAnchor.dataset.sourceLanguage = meeting.sourceLanguage;
-    listItemAnchor.dataset.targetLanguage = meeting.targetLanguage;
-    listItemAnchor.dataset.lastUpdated = meeting.lastUpdated;
+    listItemAnchor.textContent = `${pastMeetingMetadata.name} — ${pastMeetingMetadata.pantryId}`; // todo make sure date displays correctly
+    listItemAnchor.dataset.name = pastMeetingMetadata.name;
+    listItemAnchor.dataset.pantryId = pastMeetingMetadata.pantryId;
+    listItemAnchor.dataset.sourceLanguage = pastMeetingMetadata.sourceLanguage;
+    listItemAnchor.dataset.targetLanguage = pastMeetingMetadata.targetLanguage;
     listItem.appendChild(listItemAnchor);
     pastMeetingsUL.appendChild(listItem);
   }
@@ -47,7 +42,7 @@ function pastMeetingListOnclickHandler(event) {
   // and transition to meeting.html with a flag to indicate that we are loading a past meeting 
   const clickedMeeting = event.target;
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(clickedMeeting.dataset));
-  c
+  window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
 
 function openPastMeetingFromUserEnteredCode(event) {
@@ -57,15 +52,13 @@ function openPastMeetingFromUserEnteredCode(event) {
   const codeInputText = codeInputElement.value.trim();
 
   //todo make sure that meeting exists
+
   //put meeting id into session storage
   const metaData = {pantryId: codeInputText};
   sessionStorage.setItem(CURRENT_MEETING_SESSION_KEY, JSON.stringify(metaData));
 
   //transition to meeting.html
-
   window.location.assign('meeting.html' + PAST_MEETING_URLSEARCHPARAM_FLAG);
-
-
 }
 
 const lookUpMeetingForm = document.querySelector("form");
