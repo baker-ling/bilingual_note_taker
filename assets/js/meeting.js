@@ -116,11 +116,18 @@ function saveMeeting() {
 
 //function to save to localStorage();
 function saveToLocalStorage() {
-  meetingsMetadataArray.push(meetingMetadata);
+  if (!meetingIdInMetadataArray(meetingMetadata.pantryId)) {
+    meetingsMetadataArray.push(meetingMetadata);
+  }
   localStorage.setItem(
     "meetingsMetadataArray",
     JSON.stringify(meetingsMetadataArray)
   );
+}
+
+// Checks if there is a meeting metadata object in the global meetingsMetadataArray with the given pantryId
+function meetingIdInMetadataArray(pantryId) {
+  return meetingsMetadataArray.some((meeting)=> meeting.pantryId === pantryId);
 }
 
 //function to POST to Pantry
