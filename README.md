@@ -24,9 +24,9 @@ Server-side APIs--LibreTranslate and Pantry
 
 ## Screenshots 
     Add screenshots 
-![Home Screen](/assets/images/.png)
-![Meeting Screen](/assets/images/.png)
-![Past Meetings Screen](/assets/images/.png)
+![Home Screen](/assets/images/HomePage.png)
+![Meeting Screen](/assets/images/MeetingPage.png)
+![Past Meetings Screen](/assets/images/PastMeetingPage.png)
 
 
 ## Link

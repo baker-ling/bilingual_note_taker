@@ -43,7 +43,7 @@ function insertRow(currentRow = null) {
             </a>
             
           <a href="#" class="btn-floating orange">
-                <i class="translate-button material-icons white-text">edit</i>
+                <i class="translate-button material-icons white-text">translate</i>
             </a>`;
 
   // insert between currentRow and the row that follows it
