@@ -230,13 +230,7 @@ function showMeetingLastUpdated() {
 }
 
 function loadingPastMeetingCheck() {
-
-  // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
-  // the meetings in localStorage
-
-  // todo move declaration from here and past_meeting.js to utils.js
   return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
-
 }
 
 function initMeeting() {
