@@ -1,6 +1,6 @@
 function displayPastMeetingsList() {
   const pastMeetings =
-    JSON.parse(localStorage.getItem("meetingsMetadataArray")) || [];
+    JSON.parse(localStorage.getItem(PAST_MEETINGS_LS_KEY)) || [];
   const pastMeetingsUL = document.querySelector("#past-meeting-list ul");
   //make sure pastMeetingsUL has no children
   while (pastMeetingsUL.firstChild) {
@@ -13,8 +13,7 @@ function displayPastMeetingsList() {
     pastMeetingsUL.appendChild(listItem)
   } else {
     //add list items for each meeting
-    for (const meeting of pastMeetings) {
-      const pastMeetingMetadata = meeting.meetingMetadata
+    for (const pastMeetingMetadata of pastMeetings) {
       const listItem = document.createElement("li");
       const listItemAnchor = document.createElement("a");
       listItemAnchor.textContent = `${pastMeetingMetadata.name} — ${pastMeetingMetadata.pantryId}`; // todo make sure date displays correctly
@@ -30,19 +29,6 @@ function displayPastMeetingsList() {
   }
 }
 
-//function to GET(retrieve notes) from Pantry using identifier
-async function getNotesFromPantry() {
-  let response = await fetch(
-    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
-    {
-      method: "GET",
-      headers: { "Content-type": "application/json" },
-    }
-  );
-  const data = await response.json();
-  console.log(data.notes);
-  return data.notes;
-}
 
 function pastMeetingListOnclickHandler(event) {
   // get meeting metadata from anchor element that was clicked, put it in session storage,
