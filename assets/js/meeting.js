@@ -9,7 +9,7 @@ let meetingsMetadataArray =
 const mainElement = document.querySelector("main");
 const saveMeetingEl = document.querySelector("#save-button-bottom");
 const meetingTitleEl = document.querySelector("#meeting-title");
-const notesArray = [];
+
 /**
  * Callback function for original note textareas to automatically
  * translate contents.
@@ -111,6 +111,7 @@ bottomExitButton.addEventListener("click", function () {
 function saveMeeting() {
   saveToLocalStorage();
   saveToPantry();
+  toastPopUp();
 }
 
 //function to save to localStorage();
@@ -169,8 +170,9 @@ async function updateNotesOnPantry() {
  * Returns an array of strings for all of the source text notes.
  */
 function getNotesFromCurrentMeeting() {
+  const notes = [];
   document.querySelectorAll(".note-source").forEach((note) => {
-    notesArray.push(note.value.trim());
+    notes.push(note.value.trim());
   });
   return notes;
 }
@@ -204,7 +206,7 @@ function initPastMeeting() {
 }
 
 function initNewMeeting() {
-  showMeetingTitle(meetingMetadata.title);
+  showMeetingTitle(meetingMetadata);
   showMeetingLanguages();
 }
 
@@ -229,34 +231,26 @@ function showMeetingLastUpdated() {
   // todo
 }
 
-function loadingPastMeetingCheck() {
+// function loadingPastMeetingCheck() {
+//   // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
+//   // the meetings in localStorage
 
-  // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
-  // the meetings in localStorage
+//   // todo move declaration from here and past_meeting.js to utils.js
+//   return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
+// }
 
-  // todo move declaration from here and past_meeting.js to utils.js
-  return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
-
-}
-
-function initMeeting() {
-  if (loadingPastMeetingCheck()) {
-    initPastMeeting();
-  } else {
-    initNewMeeting();
-  }
-}
-
-
-/*toast popup when save is clicked*/
-saveMeetingEl.addEventListener("click", toastPopUp);
-
+// function initMeeting() {
+//   if (loadingPastMeetingCheck()) {
+//     initPastMeeting();
+//   } else {
+//     initNewMeeting();
+//   }
+// }
+//display toast when meeting is saved
 function toastPopUp() {
-  let toastHTML = '<span>Save successful!</span><button';
-  M.toast({html: toastHTML, classes: 'rounded'});
-
+  let toastHTML = "<span>Save successful!</span><button";
+  M.toast({ html: toastHTML, classes: "rounded" });
 }
-
 
 // /**
 //  * Code to intialize meeting.html
@@ -267,10 +261,7 @@ function toastPopUp() {
 //   initNewMeeting(); // todo make sure that this call matches what Cooper is working on
 // }
 
-
 //add event listener to save meeting button
 saveMeetingEl.addEventListener("click", saveMeeting);
 
-initMeeting();
-
-
+initNewMeeting();
