@@ -231,37 +231,25 @@ function showMeetingLastUpdated() {
   // todo
 }
 
-// function loadingPastMeetingCheck() {
-//   // todo check if we are loading a past meeting based on whether meeting.pantryId matches any of
-//   // the meetings in localStorage
+function loadingPastMeetingCheck() {
+  return window.location.href.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
+}
 
-//   // todo move declaration from here and past_meeting.js to utils.js
-//   return window.location.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
-// }
+function initMeeting() {
+  if (loadingPastMeetingCheck()) {
+    initPastMeeting();
+  } else {
+    initNewMeeting();
+  }
+}
 
-// function initMeeting() {
-//   if (loadingPastMeetingCheck()) {
-//     initPastMeeting();
-//   } else {
-//     initNewMeeting();
-//   }
-// }
 //display toast when meeting is saved
 function toastPopUp() {
   let toastHTML = "<span>Save successful!</span><button";
   M.toast({ html: toastHTML, classes: "rounded" });
 }
 
-// /**
-//  * Code to intialize meeting.html
-//  */
-// if (checkForPastMeetingSearchParam()) {
-//   initPastMeeting();
-// } else {
-//   initNewMeeting(); // todo make sure that this call matches what Cooper is working on
-// }
-
 //add event listener to save meeting button
 saveMeetingEl.addEventListener("click", saveMeeting);
 
-initNewMeeting();
+initMeeting();
