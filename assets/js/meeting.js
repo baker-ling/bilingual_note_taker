@@ -139,6 +139,20 @@ async function saveToPantry() {
   const data = await response.text();
 }
 
+//function to GET(retrieve notes) from Pantry using identifier
+async function getNotesFromPantry() {
+  let response = await fetch(
+    `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
+    {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+    }
+  );
+  const data = await response.json();
+  console.log(data.notes);
+  return data.notes;
+}
+
 //function to DELETE from Pantry
 async function deleteNotesFromPantry() {
   const response = await fetch(
@@ -176,15 +190,13 @@ function getNotesFromCurrentMeeting() {
   });
   return notes;
 }
-/**
- * Displays a past meeting based on meeting.metadata
- */
-async function displayPastMeeting() {
-  const notes = await getNotes();
+
+async function initPastMeeting() {
   showMeetingTitle();
   showMeetingLanguages();
   showMeetingLastUpdated();
-
+  const notes = await getNotesFromPantry(); 
+  
   // clear all children from main element
   while (mainElement.firstChild) {
     mainElement.removeChild(mainElement.firstChild);
@@ -199,14 +211,8 @@ async function displayPastMeeting() {
   }
 }
 
-function initPastMeeting() {
-  // todo fix to get from session storage instead
-  const meeting = getPastMeetingById(meetingId); // todo make sure that this integrates with what Samira is working on
-  displayPastMeeting(meeting);
-}
-
 function initNewMeeting() {
-  showMeetingTitle(meetingMetadata);
+  showMeetingTitle();
   showMeetingLanguages();
 }
 
