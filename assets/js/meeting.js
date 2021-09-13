@@ -232,7 +232,7 @@ function showMeetingLastUpdated() {
 }
 
 function loadingPastMeetingCheck() {
-  return window.location.href.contains(PAST_MEETING_URLSEARCHPARAM_FLAG);
+  return window.location.href.includes(PAST_MEETING_URLSEARCHPARAM_FLAG);
 }
 
 function initMeeting() {
