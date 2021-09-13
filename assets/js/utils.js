@@ -54,25 +54,29 @@ const langCodesToNames = {
  * @returns {string} Machine translation result.
  */
 async function getTranslation(sourceText, sourceLanguage, targetLanguage) {
-    const requestResult = await fetch("https://libretranslate.de/translate", {
-      method: "POST",
-      body: JSON.stringify({
-        q: sourceText,
-        source: sourceLanguage,
-        target: targetLanguage,
-      }),
-      headers: { "Content-type": "application/json" },
-    });
-  
-    const data = await requestResult.json();
-    return data.translatedText;
+  if (sourceText.trim() === '') {
+    return '';
   }
 
+  const requestResult = await fetch("https://libretranslate.de/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: sourceText,
+      source: sourceLanguage,
+      target: targetLanguage,
+    }),
+    headers: { "Content-type": "application/json" },
+  });
 
-  function getSourceLanguageForCurrentMeeting() {
-    return langNamesToCodes[meetingMetadata.sourceLanguage];
-  }
-  
-  function getTargetLanguageForCurrentMeeting() {
-    return langNamesToCodes[meetingMetadata.targetLanguage];
-  }
+  const data = await requestResult.json();
+  return data.translatedText;
+}
+
+
+function getSourceLanguageForCurrentMeeting() {
+  return langNamesToCodes[meetingMetadata.sourceLanguage];
+}
+
+function getTargetLanguageForCurrentMeeting() {
+  return langNamesToCodes[meetingMetadata.targetLanguage];
+}

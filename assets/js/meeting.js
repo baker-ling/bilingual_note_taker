@@ -1,5 +1,5 @@
 const PANTRY_KEY = "57dfac71-7e72-4583-8f41-fd7b82d032c1";
-const meetingMetadata = JSON.parse(
+let meetingMetadata = JSON.parse(
   sessionStorage.getItem(CURRENT_MEETING_SESSION_KEY)
 );
 let meetingsMetadataArray =
@@ -139,6 +139,21 @@ async function saveToPantry() {
   const data = await response.text();
 }
 
+// // function to get full meeting metadata from Pantry using indentifier in global variable meetingMetadata
+// // Makes result available through global variable meetingMetdata
+// async function getMetadataFromPantry() {
+//   let response = await fetch(
+//     `https://getpantry.cloud/apiv1/pantry/${PANTRY_KEY}/basket/${meetingMetadata.pantryId}`,
+//     {
+//       method: "GET",
+//       headers: { "Content-type": "application/json" },
+//     }
+//   );
+//   const data = await response.json();
+  
+//   return true;
+// }
+
 //function to GET(retrieve notes) from Pantry using identifier
 async function getNotesFromPantry() {
   let response = await fetch(
@@ -149,6 +164,7 @@ async function getNotesFromPantry() {
     }
   );
   const data = await response.json();
+  meetingMetadata = data.Metadata;
   console.log(data.notes);
   return data.notes;
 }
@@ -192,10 +208,11 @@ function getNotesFromCurrentMeeting() {
 }
 
 async function initPastMeeting() {
+  const notes = await getNotesFromPantry(); 
   showMeetingTitle();
   showMeetingLanguages();
   showMeetingLastUpdated();
-  const notes = await getNotesFromPantry(); 
+  
   
   // clear all children from main element
   while (mainElement.firstChild) {
