@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <nav>
-        <div class="nav-wrapper indigo darken-4">
-          <a href="#" class="brand-logo">Bilingual Note Taker</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="meeting.html">Meeting</a></li>
-            <li><a href="past_meetings.html">Past Meeting</a></li>
-          </ul>
-        </div>
-      </nav>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <nav>
+    <div class="nav-wrapper indigo darken-4">
+      <a href="#" class="brand-logo">Bilingual Note Taker</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="past_meetings.html">Past Meeting</a></li>
+      </ul>
+    </div>
+  </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>Bilingual Meeting Note Taker</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-<body class="container orange lighten-5">
+  </head>
+  <body class="container orange lighten-5">
     <header><h1>View Notes from Past Meetings</h1></header>
     <section id="past-meeting-list">
-        <h2>Past Meetings from Your Computer</h2>
-        <ul>
-            <li>Meeting Name  Meeting date - code for sharing</li>
-        </ul>
+      <h2>Past Meetings from Your Computer</h2>
+      <ul>
+        <li>Meeting Name Meeting date - code for sharing</li>
+      </ul>
     </section>
 
     <section id="lookup-meeting-section">
-        <h2>Lookup a Past Meeting by Code</h2>
-        <form name="lookup-meeting-form">
-            <input type="text" id="meeting-code-input" placeholder="Enter the code from a previous meeting">
-            <!--submit button-->
-            <a href="#" class="btn indigo">
-                <span>Look up meeting</span>
-                <i class="material-icons right white-text">perm_media</i>
-            </a>
-        </form>
+      <h2>Lookup a Past Meeting by Code</h2>
+      <form name="lookup-meeting-form">
+        <input
+          type="text"
+          id="meeting-code-input"
+          placeholder="Enter the code from a previous meeting"
+        />
+        <!--submit button-->
+        <a href="#" class="btn indigo">
+          <span>Look up meeting</span>
+          <i class="material-icons right white-text">perm_media</i>
+        </a>
+      </form>
     </section>
     <script src="./assets/js/utils.js"></script>
     <script src="./assets/js/past_meeting.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
+  </body>
 </html>
