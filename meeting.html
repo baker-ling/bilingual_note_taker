@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>Bilingual Meeting Note Taker</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  </head>
 
-<nav>
+  <nav>
     <div class="nav-wrapper indigo darken-4">
       <a href="#" class="brand-logo">Bilingual Note Taker</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
-        <li><a href="meeting.html">Meeting</a></li>
         <li><a href="past_meetings.html">Past Meeting</a></li>
       </ul>
     </div>
   </nav>
 
-<body class="container orange lighten-5">
-
+  <body class="container orange lighten-5">
     <header>
-        <h1 class="center-align">Bilingual Meeting Note Taker</h1>
-        <h2 id="meeting-title">Meeting Title</h2>   
-        <!--Future Development
+      <h1 class="center-align">Bilingual Meeting Note Taker</h1>
+      <h2 id="meeting-title">Meeting Title</h2>
+      <!--Future Development
             Time and Date 
         <h3>Last updated:
             <div id="last-updated-time">date and time</div>
@@ -37,51 +41,56 @@
        -->
     </header>
     <main>
-        <!--Meeting Notes that came from translation between languages-->
+      <!--Meeting Notes that came from translation between languages-->
 
-        <div class="line-item row">
-            <!--mobile first-->
-            <textarea class="note-source white col s12 m6"></textarea>
-            <textarea class="note-translation white col s12 m6"></textarea>
-          
-            <!--Insert line button-->
-            <a href="#" class="btn-floating green">
-                <i class="insert-below-button material-icons white-text">add</i>
-            </a>
-            
-            <!--delete button-->
-            <a href="#" class="btn-floating red">
-                <i class="delete-button material-icons white-text">remove</i>
-            </a>
-            
-          <a href="#" class="btn-floating orange">
-                <i class="translate-button material-icons white-text">edit</i>
-            </a>
-        </div>
+      <div class="line-item row">
+        <!--mobile first-->
+        <textarea class="note-source white col s12 m6"></textarea>
+        <textarea class="note-translation white col s12 m6"></textarea>
+
+        <!--Insert line button-->
+        <a href="#" class="btn-floating green">
+          <i class="insert-below-button material-icons white-text">add</i>
+        </a>
+
+        <!--delete button-->
+        <a href="#" class="btn-floating red">
+          <i class="delete-button material-icons white-text">remove</i>
+        </a>
+
+        <a href="#" class="btn-floating orange">
+          <i class="translate-button material-icons white-text">edit</i>
+        </a>
+      </div>
     </main>
-    <br>
+    <br />
     <footer>
+      <!--Save and delete Notes-->
 
-    <!--Save and delete Notes-->
-
-    <!--save-button-bottom-->
-    <a href="#" id="save-button-bottom" class="btn indigo waves-effect waves-light">
+      <!--save-button-bottom-->
+      <a
+        href="#"
+        id="save-button-bottom"
+        class="btn indigo waves-effect waves-light"
+      >
         <span>Save Meeting</span>
         <i class="material-icons right white-text">save</i>
-    </a>
-      
-    <!--exit meeting-->
-    <a href="#" id="exit-button-bottom" class="btn indigo waves-effect waves-light">
+      </a>
+
+      <!--exit meeting-->
+      <a
+        href="#"
+        id="exit-button-bottom"
+        class="btn indigo waves-effect waves-light"
+      >
         <span>Exit Meeting</span>
         <i class="material-icons right white-text">exit_to_app</i>
-    </a>
-      
+      </a>
     </footer>
-    
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/utils.js"></script>
     <script src="./assets/js/meeting.js"></script>
-</body>
+  </body>
 </html>
