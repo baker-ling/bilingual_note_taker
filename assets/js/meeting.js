@@ -53,7 +53,7 @@ function insertRow(currentRow = null) {
 }
 
 function mainElementonclickListener(event) {
-  console.log(event);
+  // console.log(event);
   if (event.target.classList.contains("insert-below-button")) {
     let currentRow = event.target.closest("div");
     insertRow(currentRow);
@@ -61,6 +61,9 @@ function mainElementonclickListener(event) {
   } else if (event.target.classList.contains("delete-button")) {
     let currentRow = event.target.closest("div");
     deleteRow(currentRow);
+    if (getNumberOfRowsInCurrentMeeting() === 0) {
+      insertRow();
+    }
   } else if (event.target.classList.contains("translate-button")) {
     let currentRow = event.target.closest("div");
     let sourceTextarea = currentRow.querySelector(".note-source");
@@ -71,6 +74,10 @@ mainElement.addEventListener("click", mainElementonclickListener);
 
 function deleteRow(currentRow) {
   currentRow.remove();
+}
+
+function getNumberOfRowsInCurrentMeeting() {
+  return document.querySelectorAll('.line-item').length;
 }
 
 /**
