@@ -9,17 +9,17 @@ This application can be used for note taking during meetings that require transl
 
 ## Collaborators
 Team: Create HTML skeleton at beginning and debug at end  
-Brian Baker: LibreTranslate API, display past meetings  
-Cameron White: Develop UI and visual design  
-Cooper Barnes: Code to start meetings, add and delete items  
-Jonathan Taylor: Handle exiting a meeting, fetch notes from past meetings  
-Samira Abdalla: Storing meetings with Pantry API and local storage  
+- Brian Baker: LibreTranslate API, display past meetings  
+- Cameron White: Develop UI and visual design  
+- Cooper Barnes: Code to start meetings, add and delete items  
+- Jonathan Taylor: Handle exiting a meeting, fetch notes from past meetings  
+- Samira Abdalla: Storing meetings with Pantry API and local storage  
 
 ## Technologies
-HTML  
-JavaScript  
-Materialize CSS  
-Server-side APIs--LibreTranslate and Pantry
+- HTML  
+- JavaScript  
+- Materialize CSS  
+- Server-side APIs--LibreTranslate and Pantry
 
 
 ## Screenshots 
@@ -29,4 +29,4 @@ Server-side APIs--LibreTranslate and Pantry
 
 
 ## Link
-https://baker-ling.github.io/osu_bcs_project1/index.html
+https://baker-ling.github.io/bilingual_note_taker/
